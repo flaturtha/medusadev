@@ -1,0 +1,13 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "dependencies": {
+        "talesofmurder-ui": "link:talesofmurder-ui",
+      },
+    },
+  },
+  "packages": {
+    "talesofmurder-ui": ["talesofmurder-ui@link:talesofmurder-ui", {}],
+  }
+}
