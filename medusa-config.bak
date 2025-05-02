@@ -2,7 +2,7 @@ import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
-export default defineConfig({
+module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     http: {
@@ -11,23 +11,8 @@ export default defineConfig({
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
-    },
+    }
   },
-
-  // 👇 THIS is what you’re missing
-  plugins: [
-    {
-      resolve: "medusa-source-shopify",
-      options: {
-        storeUrl: process.env.SHOPIFY_STORE_URL,
-        apiKey: process.env.SHOPIFY_API_KEY,
-        password: process.env.SHOPIFY_API_PASSWORD,
-        collections: process.env.SHOPIFY_COLLECTIONS === "true",
-        verbose: true,
-      },
-    },
-  ],
-
   modules: [
     {
       resolve: "./src/modules/brand",
@@ -37,4 +22,3 @@ export default defineConfig({
     },
   ],
 })
-
