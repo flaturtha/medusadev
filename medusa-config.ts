@@ -14,27 +14,19 @@ export default defineConfig({
     },
   },
 
-  // 👇 THIS is what you’re missing
   plugins: [
     {
-      resolve: "medusa-source-shopify",
+      resolve: "medusa-payment-stripe",
       options: {
-        storeUrl: process.env.SHOPIFY_STORE_URL,
-        apiKey: process.env.SHOPIFY_API_KEY,
-        password: process.env.SHOPIFY_API_PASSWORD,
-        collections: process.env.SHOPIFY_COLLECTIONS === "true",
-        verbose: true,
+        api_key: process.env.STRIPE_API_KEY,
+        webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
       },
     },
   ],
 
   modules: [
-    {
-      resolve: "./src/modules/brand",
-    },
-    {
-      resolve: "./src/modules/authors",
-    },
+    { resolve: "./src/modules/brand" },
+    { resolve: "./src/modules/authors" },
   ],
 })
 
